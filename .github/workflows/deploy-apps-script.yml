@@ -1,0 +1,62 @@
+name: Deploy Apps Script
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps-script/**"
+      - ".github/workflows/deploy-apps-script.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Push source with clasp
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install clasp
+        run: npm install --global @google/clasp
+
+      - name: Write clasp credentials
+        env:
+          CLASP_CREDENTIALS: ${{ secrets.CLASP_CREDENTIALS }}
+        run: |
+          if [ -z "$CLASP_CREDENTIALS" ]; then
+            echo "CLASP_CREDENTIALS secret is required." >&2
+            exit 1
+          fi
+
+          printf '%s' "$CLASP_CREDENTIALS" > "$HOME/.clasprc.json"
+          chmod 600 "$HOME/.clasprc.json"
+
+      - name: Write clasp project config
+        env:
+          CLASP_SCRIPT_ID: ${{ secrets.CLASP_SCRIPT_ID }}
+        run: |
+          if [ -z "$CLASP_SCRIPT_ID" ]; then
+            echo "CLASP_SCRIPT_ID secret is required." >&2
+            exit 1
+          fi
+
+          cat > .clasp.json <<EOF
+          {
+            "scriptId": "$CLASP_SCRIPT_ID",
+            "rootDir": "apps-script"
+          }
+          EOF
+
+      - name: Deploy Apps Script source
+        run: clasp push --force
