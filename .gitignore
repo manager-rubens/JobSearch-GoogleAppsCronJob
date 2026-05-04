@@ -1,0 +1,18 @@
+# Local/generated data
+*.html
+*.json.tmp
+siemens_*.json
+siemens_*.html
+
+# Python/tool caches
+__pycache__/
+*.pyc
+
+# Local editor/system files
+.DS_Store
+Thumbs.db
+
+# Do not commit local secrets
+.env
+.env.*
+.clasp.json

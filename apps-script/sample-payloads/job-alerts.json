@@ -1,0 +1,31 @@
+{
+  "token": "YOUR_WEBHOOK_TOKEN",
+  "template": "job-alerts",
+  "to": "manager.rubens@gmail.com",
+  "subject": "Vagas recomendadas para Ruben - 2026-05-04",
+  "headline": "Ruben, encontrei 3 vagas com bom alinhamento ao seu perfil.",
+  "stats": {
+    "emailsScanned": 10,
+    "jobsExtracted": 32,
+    "jobsSelected": 3
+  },
+  "signals": ["Tech Manager", "Liderança de squads", "IA", "Delivery ágil"],
+  "jobs": [
+    {
+      "title": "Tech Manager",
+      "company": "PicPay",
+      "location": "São Paulo e Região",
+      "model": "Remoto",
+      "source": "LinkedIn",
+      "score": 90,
+      "decision": "Forte fit",
+      "confidence": "Média",
+      "why": "Match direto com liderança de times ágeis, métricas de entrega e cultura técnica.",
+      "risk": "Fonte analisada: alerta de e-mail apenas. Confirmar escopo de gestão.",
+      "url": "https://www.linkedin.com/jobs/"
+    }
+  ],
+  "otherJobs": [],
+  "ignored": ["Alertas sociais e notificações sem vagas"],
+  "note": "Payload de exemplo. Substitua o token antes de testar."
+}
