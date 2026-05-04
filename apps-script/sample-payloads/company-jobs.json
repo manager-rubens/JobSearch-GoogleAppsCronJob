@@ -1,0 +1,37 @@
+{
+  "token": "YOUR_WEBHOOK_TOKEN",
+  "template": "company-jobs",
+  "companyName": "Empresa Exemplo",
+  "brandLogoUrl": "https://example.com/logo.png",
+  "brandColor": "#102a33",
+  "brandAccentColor": "#0ea5a3",
+  "sourceLabel": "Fonte oficial da empresa",
+  "locationLabel": "Vagas em Sao Paulo",
+  "to": "manager.rubens@gmail.com",
+  "subject": "Vagas Empresa Exemplo em Sao Paulo - 2026-05-04",
+  "headline": "Ruben, encontrei vagas abertas da Empresa Exemplo em Sao Paulo.",
+  "stats": {
+    "emailsScanned": 0,
+    "jobsExtracted": 12,
+    "jobsSelected": 3
+  },
+  "signals": ["Empresa Exemplo", "Sao Paulo", "Lideranca", "Delivery"],
+  "jobs": [
+    {
+      "title": "IT Business Partner",
+      "company": "Empresa Exemplo",
+      "location": "Sao Paulo, Brasil",
+      "model": "Hibrido",
+      "source": "Empresa Exemplo Careers",
+      "score": 88,
+      "decision": "Forte fit",
+      "confidence": "Alta",
+      "why": "A vaga pede ponte entre negocio e TI, consultoria digital e gestao ponta a ponta de projetos.",
+      "risk": "Fonte analisada: descricao completa da pagina publica. Confirmar ingles fluente e presenca hibrida.",
+      "url": "https://example.com/careers"
+    }
+  ],
+  "otherJobs": [],
+  "ignored": ["Banco de talentos excluido"],
+  "note": "Payload de exemplo. Substitua o token antes de testar."
+}

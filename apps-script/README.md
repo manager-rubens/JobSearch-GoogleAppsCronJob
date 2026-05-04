@@ -9,19 +9,19 @@ The script supports two delivery modes:
 
 ## Templates
 
-The script currently renders two templates:
+The script currently renders two generic templates:
 
-- `job-alerts`: generic LinkedIn/Glassdoor-style digest for job alert emails.
-- `siemens-energy`: Siemens Energy branded digest with company logo and Siemens Energy palette.
+- `job-alerts`: generic digest for job alert emails from sources such as LinkedIn, Glassdoor, recruiters, or saved searches.
+- `company-jobs`: configurable company careers digest. The company, logo, colors, source label, headline, and location/title copy all come from the payload.
 
-The renderer is selected by `payload.template`.
+The renderer is selected by `payload.template`. Company-specific search logic belongs in the Codex cron job payload generation, not in this Apps Script project.
 
 ## Files
 
 - `Code.gs`: Apps Script source.
 - `appsscript.json`: Apps Script manifest.
 - `sample-payloads/job-alerts.json`: example payload for the generic digest.
-- `sample-payloads/siemens-energy.json`: example payload for the Siemens Energy digest.
+- `sample-payloads/company-jobs.json`: example payload for a configurable company careers digest.
 
 ## Setup
 
@@ -45,20 +45,26 @@ This endpoint accepts POST JSON payloads:
 ```json
 {
   "token": "YOUR_WEBHOOK_TOKEN",
-  "template": "job-alerts",
+  "template": "company-jobs",
+  "companyName": "Empresa Exemplo",
+  "brandLogoUrl": "https://example.com/logo.png",
+  "brandColor": "#102a33",
+  "brandAccentColor": "#0ea5a3",
+  "sourceLabel": "Fonte oficial da empresa",
+  "locationLabel": "Vagas em Sao Paulo",
   "to": "manager.rubens@gmail.com",
-  "subject": "Vagas recomendadas para Ruben - 2026-05-04",
-  "headline": "Ruben, encontrei 3 vagas com bom alinhamento ao seu perfil.",
+  "subject": "Vagas Empresa Exemplo em Sao Paulo - 2026-05-04",
+  "headline": "Ruben, encontrei vagas abertas da Empresa Exemplo em Sao Paulo.",
   "stats": {
-    "emailsScanned": 10,
-    "jobsExtracted": 30,
+    "emailsScanned": 0,
+    "jobsExtracted": 12,
     "jobsSelected": 3
   },
-  "signals": ["Tech Manager", "Liderança", "IA"],
+  "signals": ["Empresa Exemplo", "Sao Paulo", "Lideranca", "Delivery"],
   "jobs": [],
   "otherJobs": [],
   "ignored": [],
-  "note": "Avaliação provisória quando a descrição completa não está pública."
+  "note": "Avaliacao baseada em fonte publica ou oficial de carreiras."
 }
 ```
 
@@ -82,7 +88,7 @@ Errors are labeled as `CodexDigestError` and reported by email.
 After running `setupScriptProperties()`, run:
 
 - `testSendJobAlertsDigest()`
-- `testSendSiemensEnergyDigest()`
+- `testSendCompanyJobsDigest()`
 
 Both functions use the stored `WEBHOOK_TOKEN` and send to the configured `DEFAULT_TO`.
 

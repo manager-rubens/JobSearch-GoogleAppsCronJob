@@ -9,23 +9,23 @@
     "jobsExtracted": 32,
     "jobsSelected": 3
   },
-  "signals": ["Tech Manager", "Liderança de squads", "IA", "Delivery ágil"],
+  "signals": ["Tech Manager", "Lideranca de squads", "IA", "Delivery agil"],
   "jobs": [
     {
       "title": "Tech Manager",
       "company": "PicPay",
-      "location": "São Paulo e Região",
+      "location": "Sao Paulo e Regiao",
       "model": "Remoto",
       "source": "LinkedIn",
       "score": 90,
       "decision": "Forte fit",
-      "confidence": "Média",
-      "why": "Match direto com liderança de times ágeis, métricas de entrega e cultura técnica.",
-      "risk": "Fonte analisada: alerta de e-mail apenas. Confirmar escopo de gestão.",
+      "confidence": "Media",
+      "why": "Match direto com lideranca de times ageis, metricas de entrega e cultura tecnica.",
+      "risk": "Fonte analisada: alerta de e-mail apenas. Confirmar escopo de gestao.",
       "url": "https://www.linkedin.com/jobs/"
     }
   ],
   "otherJobs": [],
-  "ignored": ["Alertas sociais e notificações sem vagas"],
+  "ignored": ["Alertas sociais e notificacoes sem vagas"],
   "note": "Payload de exemplo. Substitua o token antes de testar."
 }
